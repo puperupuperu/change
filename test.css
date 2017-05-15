@@ -1,0 +1,52 @@
+body{
+    background-color:antiquewhite;
+}
+#name{
+    margin:5px 10px 0px;
+}
+#naiyou{
+    margin:20px 5px 10px 0px;
+    float:left;
+}
+#sousin{
+    margin:20px 5px 10px 0px;
+}
+textarea{
+    float:left;
+    margin:5px 10px 10px;
+    resize:none;
+    width:80%;
+}
+
+hr{
+    clear:left;
+}
+h1{
+    text-align: center;
+}
+#left{
+    float:left;
+    position:relative;
+    left:0px;
+    top:0px;
+    width:50%;
+    height:100%;
+    background-color:antiquewhite;
+}
+
+#comentT{
+    position:absolute;
+    right:0px;
+    font-size:13px;
+}
+#ipShow{
+    font-size:8px;
+}
+/*
+#timer{
+    position:fixed;
+    right:30px;
+    width:570px;
+    height:630px;
+}
+*/

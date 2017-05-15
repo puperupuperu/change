@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset = "UTF-8">
+        <title>テスト掲示板</title>
+        <link rel="stylesheet" href="test.css">
+        <script  src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script>
+        function $(id){
+            return document.querySelector(id);
+        }
+        window.onload = function(){
+            $('#send_btn').onclick = function(){
+                if($('#name').value !=''){
+                    if($('#msg').value !=''){
+                    sendMsg();
+                    } else {
+                    alert('内容を入力してください');
+                    }
+                }else{
+                    alert('名前を入力してください');
+                } 
+            }
+            function again(){
+            showBody();
+            }
+            setInterval(again,1000);
+        };
+            function ajax(url, callback) {
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", url, true);
+                xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) { 
+                    callback(xhr.responseText);
+                } else{
+                    console.log(xhr.responseText);
+                }
+            };
+            xhr.send(null);
+            }
+        function sendMsg() {
+            var getTime = new Date();
+            var month = getTime.getMonth()+1;
+            var day = getTime.getDate();
+            var year = getTime.getFullYear();
+            var hour = getTime.getHours();
+            var minute = getTime.getMinutes();
+            var second = getTime.getSeconds();
+            var comentTime = year + "/" + month + "/" + day+" " + hour + ":" + minute + ":" + second; 
+
+            var uri = "api?mode=sendMsg" +
+            "&name=" + encodeURIComponent($("#name").value) +
+            //"&name=" + $("#name").value +
+            "&msg=" + encodeURIComponent($("#msg").value)+
+            //"&msg=" + $("#msg").value+
+            "&time=" + encodeURIComponent(comentTime);
+            ajax(uri, function(){
+                $("#msg").value = "";
+                showBody();
+            });
+        }
+            function esc(s) {
+                return s.replace(/\&/g, "&amp;")
+                        .replace(/</g, "&lt;")
+                        .replace(/>/g, "&gt;");
+            }
+            function showBody() {
+                ajax("api?mode=show", function(data) {
+                    data = JSON.parse(data);
+                    var html = "";
+                    for (var i in data.items) {
+                        var x = data.items[i];
+                        html += esc(x[0]) + ": " + esc(x[1]) + "<div id='comentT'>" + esc(x[2])+"</div>" +"<br>"+"<br>"+"<hr>";
+                    }
+                    $("#list").innerHTML = html;
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <div id='left'>
+            <h1>テスト掲示板</h1>
+            名前
+            <input type="text" id="name" value="名無し">
+            <br>
+            <span id="naiyou">内容</span>
+            <textarea id="msg"></textarea>
+            <div id="sousin"><button id="send_btn">送信</button></div>    
+            <hr>
+            <div id="list">
+            </div>
+        </div>
+           <!-- 
+            <iframe id='timer'src="index.html">
+            </iframe>
+            -->
+    </body>
+</html>

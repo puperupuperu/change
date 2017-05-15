@@ -1,0 +1,65 @@
+<!DOCTYPE>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8"> 
+        <title>superTimer</title>
+        <link rel="stylesheet" href="main.css">
+        <script src = "jquery.js"></script>
+		<script src = "pep.js"></script>
+        <script src="./sub.js"></script>
+        <audio id="sound-file" preload="auto">
+            <source src="./siren1.mp3" type="audio/mp3">
+        </audio>    
+    </head>
+    <body>
+        <div id="timer">
+            <div id="display">
+                <span id="min">0</span> 分　<span id="sec"> 0</span> 秒
+            </div>
+            <div id="manipulator">
+                <div id="startStop">    
+                    <button id = "start">START</button>
+                    <button id = "stop">STOP</button>
+                </div>
+                <div id="resetMemory">
+                    <button id = "reset">記憶時間へ</button>
+                    <button id = "memory">時間を記憶</button>
+                </div>
+            </div>
+            <div id="timeSetting">    
+                <div id="min-setting">
+                    <button id="min-minus-one">-</button> 1分  <button id="min-plus-one">+</button>
+                    <p></p>
+                    <button id="min-minus-five">-
+                    </button> 5分 <button id="min-plus-five">+</button>
+                    <p></p>
+                    <button id="min-minus-ten">-</button>10分<button id="min-plus-ten">+</button>
+                    <p></p>
+                    <button id="min-minus-thirty">-
+                    </button>30分<button id="min-plus-thirty">+</button>
+                </div>
+                <div id="sec-setting">
+                    <button id="sec-minus-one">-</button> 1秒 <button id="sec-plus-one">+</button>
+                    <p></p><button id="sec-minus-five">-</button> 5秒 <button id="sec-plus-five">+</button>
+                    <p></p><button id="sec-minus-ten">-</button>10秒<button id="sec-plus-ten">+</button>
+                    <p></p><button id="sec-minus-thirty">-</button>30秒<button id="sec-plus-thirty">+</button>
+                </div>
+            </div>
+            <div id="alert">
+                <span id="alert-setting-title">Alert Popup　</span>
+                <span id="alert-set-button">
+                    <button id="alerton">ON</button>
+                    <button id="alertoff" >OFF</button>
+                </span>
+            </div>
+            <div id="alarm">
+                <span id="alarm-setting-title">Alarm Setting</span>
+                <span id="alarm-set-button">
+                    <button id="alarmon">ON</button>
+                    <button id="alarmoff" >OFF</button>
+                    <button id="alarmstop">Alarm STOP</button>
+                </span>
+            </div>
+        </div>
+    </body>
+</html>
